@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rebis-dsl"
+version = "0.1.0"
+description = "Cross-platform UI specification language — one DSL, many native backends"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+
+authors = [{ name = "Rebis contributors" }]
+
+keywords = [
+    "dsl", "ui", "transpiler", "cross-platform", "code-generation",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Software Development :: Compilers",
+    "Topic :: Software Development :: Preprocessors",
+]
+
+[project.urls]
+Homepage = "https://github.com/clawdbot58-pixel/rebis"
+Repository = "https://github.com/clawdbot58-pixel/rebis"
+"Bug Tracker" = "https://github.com/clawdbot58-pixel/rebis/issues"
+
+[project.scripts]
+rebis = "rebis.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

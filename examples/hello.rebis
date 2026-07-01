@@ -1,0 +1,11 @@
+// Hello, Rebis!
+// Basic UI component demonstrating the DSL syntax.
+// NOTE: Indentation must use tabs, per the spec.
+
+component greeting_card {
+	state name: String = "World"
+
+	column padding=24 spacing=16
+		text value="Hello, ${name}" font="bold 24"
+		button label="Tap Me" width=200 height=48
+}
