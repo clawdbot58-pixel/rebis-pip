@@ -1,0 +1,39 @@
+# PyPI publishing workflow for rebis-dsl
+#
+# Trigger: create a GitHub Release → builds + publishes to PyPI
+# Uses trusted publishing (OIDC) — no API tokens needed.
+#
+# Setup on PyPI (one-time):
+#   1. Go to https://pypi.org/manage/account/publishing/
+#   2. Add a new trusted publisher with:
+#      - PyPI Project:  rebis-dsl
+#      - Owner:         clawdbot58-pixel
+#      - Repo:          rebis-pip
+#      - Workflow:      publish.yml
+#      - Environment:   pypi
+
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build
+        run: |
+          pip install build
+          python -m build
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1
